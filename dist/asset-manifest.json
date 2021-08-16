@@ -1,0 +1,35 @@
+{
+  "files": {
+    "static/js/0.dd94f86d.chunk.js": "/static/js/0.dd94f86d.chunk.js",
+    "static/js/0.dd94f86d.chunk.js.map": "/static/js/0.dd94f86d.chunk.js.map",
+    "main.css": "/static/css/main.6d7ce8e6.chunk.css",
+    "main.js": "/static/js/main.d12e30be.chunk.js",
+    "main.js.map": "/static/js/main.d12e30be.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.344ff329.js",
+    "runtime-main.js.map": "/static/js/runtime-main.344ff329.js.map",
+    "static/js/3.e1e5e9b6.chunk.js": "/static/js/3.e1e5e9b6.chunk.js",
+    "static/js/3.e1e5e9b6.chunk.js.map": "/static/js/3.e1e5e9b6.chunk.js.map",
+    "static/js/4.42155d72.chunk.js": "/static/js/4.42155d72.chunk.js",
+    "static/js/4.42155d72.chunk.js.map": "/static/js/4.42155d72.chunk.js.map",
+    "static/css/5.b8be87de.chunk.css": "/static/css/5.b8be87de.chunk.css",
+    "static/js/5.5ab339d3.chunk.js": "/static/js/5.5ab339d3.chunk.js",
+    "static/js/5.5ab339d3.chunk.js.map": "/static/js/5.5ab339d3.chunk.js.map",
+    "static/js/6.69d3e0fe.chunk.js": "/static/js/6.69d3e0fe.chunk.js",
+    "static/js/6.69d3e0fe.chunk.js.map": "/static/js/6.69d3e0fe.chunk.js.map",
+    "static/js/7.e788f10f.chunk.js": "/static/js/7.e788f10f.chunk.js",
+    "static/js/7.e788f10f.chunk.js.map": "/static/js/7.e788f10f.chunk.js.map",
+    "static/js/8.3d354c9e.chunk.js": "/static/js/8.3d354c9e.chunk.js",
+    "static/js/8.3d354c9e.chunk.js.map": "/static/js/8.3d354c9e.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/5.b8be87de.chunk.css.map": "/static/css/5.b8be87de.chunk.css.map",
+    "static/css/main.6d7ce8e6.chunk.css.map": "/static/css/main.6d7ce8e6.chunk.css.map",
+    "static/js/0.dd94f86d.chunk.js.LICENSE.txt": "/static/js/0.dd94f86d.chunk.js.LICENSE.txt",
+    "static/js/4.42155d72.chunk.js.LICENSE.txt": "/static/js/4.42155d72.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.344ff329.js",
+    "static/js/4.42155d72.chunk.js",
+    "static/css/main.6d7ce8e6.chunk.css",
+    "static/js/main.d12e30be.chunk.js"
+  ]
+}

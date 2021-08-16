@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { renderRoutes } from '@/utils/renderRoutes';
+import { Provider } from 'react-redux';
+import { Layout } from 'antd';
+import routes from '@/router';
+import store from '@/store';
 
-function App() {
+export default React.memo(function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
-export default App;
+    <Provider store={store}>
+      <Layout>
+        <Router basename={window.__MICRO_APP_BASE_URL__ || '/'}>{renderRoutes(routes, store)}</Router>
+      </Layout>
+    </Provider>
+  )
+})
