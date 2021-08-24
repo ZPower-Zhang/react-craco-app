@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import { renderRoutes } from '@/utils/renderRoutes';
 import { Layout } from 'antd';
 
@@ -9,6 +9,8 @@ const BasicLayout = (props) => {
   const {
     route: { routes },
   } = props;
+
+  console.info('routes', routes)
 
   const callback = (msg) => {
     setCollapsed(msg);
@@ -27,4 +29,4 @@ const BasicLayout = (props) => {
   );
 };
 
-export default React.memo(BasicLayout)
+export default memo(BasicLayout)

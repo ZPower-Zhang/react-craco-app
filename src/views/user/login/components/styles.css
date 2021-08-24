@@ -6,7 +6,7 @@
 
 .image-container {
     position: relative;
-    background-color: #ddd;
+    background: #ddd center center no-repeat cover;
 }
 
 .canvas {
@@ -74,7 +74,7 @@
     padding: 10px;
     transform: translate(-50%, -50%);
     transition: all 0.25s;
-    background: #fff;
+    background-color: #fff;
     border-radius: 5px;
 
     visibility: hidden;

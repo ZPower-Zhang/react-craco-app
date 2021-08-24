@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { Redirect } from 'react-router-dom';
+import { Spin } from 'antd'
 
 const SuspenseComponent = (Component) => (props) => {
   return (
-    <React.Suspense fallback={null}>
+    <React.Suspense fallback={<Spin />}>
       <Component {...props}></Component>
     </React.Suspense>
   );

@@ -280,7 +280,7 @@ export default class ImageCode extends React.Component {
       <div className="image-code" style={{ width: imageWidth }}>
         <div
           className="image-container"
-          style={{ height: imageHeight, background: `url("${imageUrl}") center center no-repeat`,backgroundSize: 'cover' }}
+          style={{ height: imageHeight, background: `url("${imageUrl}") center center no-repeat`}}
         >
           <ReloadOutlined className="reload-ico" onClick={this.renderImage} />
           <canvas

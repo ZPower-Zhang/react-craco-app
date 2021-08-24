@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useRef, useReducer } from 'react'
 import { Form, Input, Button, Select, message } from 'antd';
 import { getTenantList } from '@/api/tenant'
-import { asyncAwait } from '@/utils/util'
+import { asyncAwait, useAsyncEffect } from '@/utils/util'
 
 const LoginForm = (props) => {
   const [form] = Form.useForm();
-  const { curKey } = props
   const inputRef = useRef()
 
   const [optionList, setOptionList] = useState([])
@@ -16,16 +15,32 @@ const LoginForm = (props) => {
     password: ''
   })
 
-  const getData = async () =>{
-    const res = await asyncAwait(getTenantList())
-    const resData = (res && res.data) || []
-    setOptionList(resData);
-    form.setFieldsValue({...initialValues, active: (Array.isArray(resData) && resData[0] && resData[0].id) || undefined, username: 'nzhang' });
-    setInitialValues({
-      active: (Array.isArray(resData) && resData[0] && resData[0].id) || undefined,
-      username: 'qweqe',
-    })
-  }
+  const [ number , dispatchNumbner ] = useReducer((state,action)=>{
+    const { payload , name  } = action
+    /* return的值为新的state */
+    switch(name){
+      case 'add':
+        return state + 1
+      case 'sub':
+        return state - 1 
+      case 'reset':
+        return payload
+      default:
+        break
+    }
+    return state
+  },0)
+
+  // const getData = async () =>{
+  //   const res = await asyncAwait(getTenantList())
+  //   const resData = (res && res.data) || []
+  //   setOptionList(resData);
+  //   form.setFieldsValue({...initialValues, active: (Array.isArray(resData) && resData[0] && resData[0].id) || undefined, username: 'nzhang' });
+  //   setInitialValues({
+  //     active: (Array.isArray(resData) && resData[0] && resData[0].id) || undefined,
+  //     username: 'qweqe',
+  //   })
+  // }
 
   const onFinish = (values) => {
     console.log('Success:', values);
@@ -41,15 +56,29 @@ const LoginForm = (props) => {
   };
 
   const onValuesChange = (values) => {
+    dispatchNumbner({ name:'add' })
   }
 
   const handleChangeInput = (evt) => {
+    console.info('inputRef', inputRef)
+    console.info('evtevtevt', evt)
+    console.info('inputRef value', inputRef.current.state.value)
   }
 
-  useEffect(()=>{
-    getData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[ curKey ]);
+  useAsyncEffect(async ()=> {
+    const res = await asyncAwait(getTenantList())
+    const resData = (res && res.data) || []
+    setOptionList(resData);
+    form.setFieldsValue({...initialValues, active: (Array.isArray(resData) && resData[0] && resData[0].id) || undefined, username: 'nzhang' });
+    setInitialValues({
+      active: (Array.isArray(resData) && resData[0] && resData[0].id) || undefined,
+      username: 'qweqe',
+    })
+  }, [getTenantList])
+
+  // useEffect(()=>{
+  //   getData();
+  // },[ optionList, getData ]);
 
   return (
     <Form
@@ -74,10 +103,11 @@ const LoginForm = (props) => {
       </Select>
     </Form.Item>
 
+    <span>{number}</span>
     <Form.Item
       name="username"
       rules={[{ required: true, message: '请输入用户名!' }]} >
-      <Input placeholder="请输入用户名(nzhang)" ref={inputRef} onChange={(evt) => handleChangeInput(evt)} />
+      <Input placeholder="请输入用户名(nzhang)" ref={inputRef} onKeyUp={(evt) => handleChangeInput(evt)} />
     </Form.Item>
 
     <Form.Item

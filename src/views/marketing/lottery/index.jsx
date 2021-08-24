@@ -1,12 +1,12 @@
 import * as React from 'react'
-import { Card, Row, Col, Form, Input, Button, Table} from 'antd';
+import { Card, Row, Col, Form, Input, Button, Table, DatePicker} from 'antd';
 import { DownOutlined, UpOutlined } from '@ant-design/icons';
 import { getLotteryList } from '@/api/tenant'
 import { asyncAwait } from '@/utils/util'
 
 const formItemLayout = {
-  labelCol: { span: 4 },
-  wrapperCol: { span: 18 },
+  labelCol: { span: 6 },
+  wrapperCol: { span: 17 },
 };
 // const [form] = Form.useForm();
 
@@ -29,9 +29,8 @@ export default class Lottery extends React.Component {
       expand: false,
       tableData: []
     }
+    this.formRef = React.createRef()
   }
-  
-  formRef = React.createRef()
 
   onFinish = (values) => {
     console.log(values);
@@ -55,47 +54,95 @@ export default class Lottery extends React.Component {
 
   componentDidMount() {
     this.getData()
+    console.info('formRef', this.formRef)
+    console.info('props.children', this.props.children)
   }
 
   render() {
-    const { tableData } = this.state
+    const { tableData, expand } = this.state
     return (
       <div className="page-container">
         <Card className="module-card">
-          <Form {...formItemLayout} name="control-ref" onFinish={this.onFinish}>
+          <Form {...formItemLayout} name="control-ref" onFinish={this.onFinish} ref={this.formRef}>
             <Row>
-              <Col flex="auto">
-                <Row>
-                  <Col span={8}>
-                    <Form.Item name="note" label="微信昵称" rules={[{ required: false }]}>
-                      <Input />
-                    </Form.Item>
-                  </Col>
-                  <Col span={8}>
-                    <Form.Item name="note" label="抽奖时间" rules={[{ required: false }]}>
-                      <Input />
-                    </Form.Item>
-                  </Col>
-                  <Col span={8}>
-                    <Form.Item name="note" label="手机号" rules={[{ required: false }]}>
-                      <Input />
-                    </Form.Item>
-                  </Col>
-                </Row>
+              <Col span={6}>
+                <Form.Item name="wxNickName" label="微信昵称" rules={[{ required: false }]}>
+                  <Input placeholder="请输入微信昵称，支持模糊搜索"/>
+                </Form.Item>
               </Col>
-              <Col flex="230px" className="right-btns">
+              <Col span={6}>
+                <Form.Item name="time" label="抽奖时间" rules={[{ required: false }]}>
+                  <DatePicker.RangePicker showTime />
+                </Form.Item>
+              </Col>
+              <Col span={6}>
+                <Form.Item name="phone" label="手机号" rules={[{ required: false }]}>
+                  <Input placeholder="请输入手机号" />
+                </Form.Item>
+              </Col>
+              <Col span={6} className="right-btns">
                 <span onClick={this.onHandleExpand}>
-                  展开筛选{this.state.expand ? <UpOutlined /> : <DownOutlined />}
+                  展开筛选{expand ? <UpOutlined /> : <DownOutlined />}
                 </span>
                 <Button type="primary">查询</Button>
                 <Button>重置</Button>
               </Col>
             </Row>
+            {
+              expand ? 
+              (<Row className="row-hide-item">
+                <Col span={6}>
+                  <Form.Item name="note" label="是否开奖" rules={[{ required: false }]}>
+                    <Input />
+                  </Form.Item>
+                </Col>
+                <Col span={6}>
+                  <Form.Item name="note" label="是否中奖" rules={[{ required: false }]}>
+                    <Input />
+                  </Form.Item>
+                </Col>
+                <Col span={6}>
+                  <Form.Item name="note" label="中奖礼品" rules={[{ required: false }]}>
+                    <Input />
+                  </Form.Item>
+                </Col>
+                <Col span={6}>
+                  <Form.Item name="note" label="兑奖状态" rules={[{ required: false }]}>
+                    <Input />
+                  </Form.Item>
+                </Col>
+                <Col span={6}>
+                  <Form.Item name="note" label="兑奖内容" rules={[{ required: false }]}>
+                    <Input />
+                  </Form.Item>
+                </Col>
+                <Col span={6}>
+                  <Form.Item name="note" label="是否为员工" rules={[{ required: false }]}>
+                    <Input />
+                  </Form.Item>
+                </Col>
+                <Col span={6}>
+                  <Form.Item name="note" label="员工编号" rules={[{ required: false }]}>
+                    <Input />
+                  </Form.Item>
+                </Col>
+                <Col span={6}>
+                  <Form.Item name="note" label="员工姓名" rules={[{ required: false }]}>
+                    <Input />
+                  </Form.Item>
+                </Col>
+                <Col span={6}>
+                  <Form.Item name="note" label="员工邮箱" rules={[{ required: false }]}>
+                    <Input />
+                  </Form.Item>
+                </Col>
+              </Row>) : ''
+            }
           </Form>
         </Card>
 
         <div className="table-container">
-          <Table columns={tableColumns} dataSource={tableData} />
+          <Table columns={tableColumns} dataSource={tableData} rowKey="id" />
         </div>
       </div>
     )

@@ -3,7 +3,7 @@
 import { renderRoutes } from '@/utils/renderRoutes'
 
 const RouteView = (props) => {
-  const { route: {routes = [], redirect = ''}, route} = props
+  const { route: {routes = []} } = props
   return (
     <div>
       { renderRoutes(routes)}
