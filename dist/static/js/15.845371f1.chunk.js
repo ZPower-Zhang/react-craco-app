@@ -1,0 +1,2 @@
+(this["webpackJsonpreact-craco-app"]=this["webpackJsonpreact-craco-app"]||[]).push([[15],{152:function(e,c,t){"use strict";t.r(c),t.d(c,"default",(function(){return i}));var r=t(25),a=t(26),n=t(40),p=t(41),o=t(0),u=t(13),i=function(e){Object(n.a)(t,e);var c=Object(p.a)(t);function t(){return Object(r.a)(this,t),c.apply(this,arguments)}return Object(a.a)(t,[{key:"render",value:function(){return Object(u.jsx)("div",{children:"WorkplaceWorkplaceWorkplaceWorkplace"})}}]),t}(o.Component)}}]);
+//# sourceMappingURL=15.845371f1.chunk.js.map

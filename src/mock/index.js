@@ -11,9 +11,9 @@ Mock.mock('/api/tenant/list', () => {
     code: '0',
     msg: '',
     data: [
-      { "id": 1, "name": "苏炳添的组织", "status": "0", "delFlag": "0", "createTime": "2021-07-02 10:09:44", "updateTime": "2021-07-02 10:09:44" }, 
-      { "id": 2, "name": "全红婵的组织", "status": "0", "delFlag": "0", "createTime": "2021-07-02 10:39:30", "updateTime": "2021-07-02 10:39:30" },
-      { "id": 3, "name": "郭晶晶的组织", "status": "1", "delFlag": "0", "createTime": "2021-07-02 10:39:30", "updateTime": "2021-07-02 10:39:30" },
+      { 'id': 1, 'name': '苏炳添的组织', 'status': '0', 'delFlag': '0', 'createTime': '2021-07-02 10:09:44', 'updateTime': '2021-07-02 10:09:44' }, 
+      { 'id': 2, 'name': '全红婵的组织', 'status': '0', 'delFlag': '0', 'createTime': '2021-07-02 10:39:30', 'updateTime': '2021-07-02 10:39:30' },
+      { 'id': 3, 'name': '郭晶晶的组织', 'status': '1', 'delFlag': '0', 'createTime': '2021-07-02 10:39:30', 'updateTime': '2021-07-02 10:39:30' }
     ]
   })
 })
@@ -22,15 +22,14 @@ Mock.mock('/api/lottery/list', () => {
   return Mock.mock({
     code: '0',
     msg: '',
-    'data|105':[{
+    'data|105':[ {
       'id|+1': 1,
-      'name|1':['哑巴', 'Butter-fly', '肆无忌惮', '摩天大楼', '初学者'],
-      'wxnickname|1': ['你翻译不了我的声响', '数码宝贝主题曲', '摩天大楼太稀有', '像海浪撞破了山丘'],
+      'name|1':[ '哑巴', 'Butter-fly', '肆无忌惮', '摩天大楼', '初学者' ],
+      'wxnickname|1': [ '你翻译不了我的声响', '数码宝贝主题曲', '摩天大楼太稀有', '像海浪撞破了山丘' ],
       'phone': /^1[385][1-9]\d{8}/
-    }]
+    } ]
   })
 })
-
 
 // import { isIE } from './util'
 
@@ -55,4 +54,3 @@ Mock.mock('/api/lottery/list', () => {
 //   })
 //   console.log('[antd-pro] mock mounted')
 // }
-

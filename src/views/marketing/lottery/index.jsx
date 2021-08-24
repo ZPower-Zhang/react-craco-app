@@ -1,12 +1,12 @@
 import * as React from 'react'
-import { Card, Row, Col, Form, Input, Button, Table, DatePicker} from 'antd';
+import { Card, Row, Col, Form, Input, Button, Table, DatePicker } from 'antd';
 import { DownOutlined, UpOutlined } from '@ant-design/icons';
 import { getLotteryList } from '@/api/tenant'
 import { asyncAwait } from '@/utils/util'
 
 const formItemLayout = {
   labelCol: { span: 6 },
-  wrapperCol: { span: 17 },
+  wrapperCol: { span: 17 }
 };
 // const [form] = Form.useForm();
 
@@ -23,7 +23,7 @@ const tableColumns = [
   { title: '是否员工', dataIndex: 'address10' }
 ]
 export default class Lottery extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       expand: false,
@@ -52,36 +52,35 @@ export default class Lottery extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.getData()
     console.info('formRef', this.formRef)
-    console.info('props.children', this.props.children)
   }
 
-  render() {
+  render () {
     const { tableData, expand } = this.state
     return (
       <div className="page-container">
         <Card className="module-card">
-          <Form {...formItemLayout} name="control-ref" onFinish={this.onFinish} ref={this.formRef}>
+          <Form { ...formItemLayout } name="control-ref" onFinish={ this.onFinish } ref={ this.formRef }>
             <Row>
-              <Col span={6}>
-                <Form.Item name="wxNickName" label="微信昵称" rules={[{ required: false }]}>
+              <Col span={ 6 }>
+                <Form.Item name="wxNickName" label="微信昵称" rules={ [ { required: false } ] }>
                   <Input placeholder="请输入微信昵称，支持模糊搜索"/>
                 </Form.Item>
               </Col>
-              <Col span={6}>
-                <Form.Item name="time" label="抽奖时间" rules={[{ required: false }]}>
+              <Col span={ 6 }>
+                <Form.Item name="time" label="抽奖时间" rules={ [ { required: false } ] }>
                   <DatePicker.RangePicker showTime />
                 </Form.Item>
               </Col>
-              <Col span={6}>
-                <Form.Item name="phone" label="手机号" rules={[{ required: false }]}>
+              <Col span={ 6 }>
+                <Form.Item name="phone" label="手机号" rules={ [ { required: false } ] }>
                   <Input placeholder="请输入手机号" />
                 </Form.Item>
               </Col>
-              <Col span={6} className="right-btns">
-                <span onClick={this.onHandleExpand}>
+              <Col span={ 6 } className="right-btns">
+                <span onClick={ this.onHandleExpand }>
                   展开筛选{expand ? <UpOutlined /> : <DownOutlined />}
                 </span>
                 <Button type="primary">查询</Button>
@@ -91,48 +90,48 @@ export default class Lottery extends React.Component {
             {
               expand ? 
               (<Row className="row-hide-item">
-                <Col span={6}>
-                  <Form.Item name="note" label="是否开奖" rules={[{ required: false }]}>
+                <Col span={ 6 }>
+                  <Form.Item name="note" label="是否开奖" rules={ [ { required: false } ] }>
                     <Input />
                   </Form.Item>
                 </Col>
-                <Col span={6}>
-                  <Form.Item name="note" label="是否中奖" rules={[{ required: false }]}>
+                <Col span={ 6 }>
+                  <Form.Item name="note" label="是否中奖" rules={ [ { required: false } ] }>
                     <Input />
                   </Form.Item>
                 </Col>
-                <Col span={6}>
-                  <Form.Item name="note" label="中奖礼品" rules={[{ required: false }]}>
+                <Col span={ 6 }>
+                  <Form.Item name="note" label="中奖礼品" rules={ [ { required: false } ] }>
                     <Input />
                   </Form.Item>
                 </Col>
-                <Col span={6}>
-                  <Form.Item name="note" label="兑奖状态" rules={[{ required: false }]}>
+                <Col span={ 6 }>
+                  <Form.Item name="note" label="兑奖状态" rules={ [ { required: false } ] }>
                     <Input />
                   </Form.Item>
                 </Col>
-                <Col span={6}>
-                  <Form.Item name="note" label="兑奖内容" rules={[{ required: false }]}>
+                <Col span={ 6 }>
+                  <Form.Item name="note" label="兑奖内容" rules={ [ { required: false } ] }>
                     <Input />
                   </Form.Item>
                 </Col>
-                <Col span={6}>
-                  <Form.Item name="note" label="是否为员工" rules={[{ required: false }]}>
+                <Col span={ 6 }>
+                  <Form.Item name="note" label="是否为员工" rules={ [ { required: false } ] }>
                     <Input />
                   </Form.Item>
                 </Col>
-                <Col span={6}>
-                  <Form.Item name="note" label="员工编号" rules={[{ required: false }]}>
+                <Col span={ 6 }>
+                  <Form.Item name="note" label="员工编号" rules={ [ { required: false } ] }>
                     <Input />
                   </Form.Item>
                 </Col>
-                <Col span={6}>
-                  <Form.Item name="note" label="员工姓名" rules={[{ required: false }]}>
+                <Col span={ 6 }>
+                  <Form.Item name="note" label="员工姓名" rules={ [ { required: false } ] }>
                     <Input />
                   </Form.Item>
                 </Col>
-                <Col span={6}>
-                  <Form.Item name="note" label="员工邮箱" rules={[{ required: false }]}>
+                <Col span={ 6 }>
+                  <Form.Item name="note" label="员工邮箱" rules={ [ { required: false } ] }>
                     <Input />
                   </Form.Item>
                 </Col>
@@ -142,7 +141,7 @@ export default class Lottery extends React.Component {
         </Card>
 
         <div className="table-container">
-          <Table columns={tableColumns} dataSource={tableData} rowKey="id" />
+          <Table columns={ tableColumns } dataSource={ tableData } rowKey="id" />
         </div>
       </div>
     )

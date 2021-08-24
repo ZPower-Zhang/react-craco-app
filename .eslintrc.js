@@ -62,12 +62,12 @@ module.exports = {
     'prefer-const': 0, //首选const
     quotes: [ 1, 'single' ], //引号类型 `` "" ''
     'id-match': 0, //命名检测
-    'array-bracket-spacing': [ 2, 'always' ], // 指定数组的元素之间要以空格隔开(,后面)， never参数：[ 之前和 ] 之后不能带空格，always参数：[ 之前和 ] 之后必须带空格
+    // 'array-bracket-spacing': [ 2, 'always' ], // 指定数组的元素之间要以空格隔开(,后面)， never参数：[ 之前和 ] 之后不能带空格，always参数：[ 之前和 ] 之后必须带空格
     quotes: [ 2, 'single' ], // 全部单引号
     // 数组和对象键值对最后一个逗号， never参数：不能带末尾的逗号, always参数：必须带末尾的逗号，
     // always-multiline：多行模式必须带逗号，单行模式不能带逗号
     'comma-dangle': [ 2, 'never' ],
-    'computed-property-spacing': [ 2, 'never' ], // 以方括号取对象属性时，[ 后面和 ] 前面是否需要空格, 可选参数 never, always
+    // 'computed-property-spacing': [ 2, 'never' ], // 以方括号取对象属性时，[ 后面和 ] 前面是否需要空格, 可选参数 never, always
     semi: [ 2, 'never' ], //语句强制分号结尾  不要分号
     'eol-last': 2, // 文件末尾强制换行
     'semi-spacing': [ 0, { before: false, after: true } ], //分号前后空格
@@ -100,5 +100,6 @@ module.exports = {
     camelcase: [ 1 ],
     'no-unused-vars': 'off',
     'no-underscore-dangle': [ 0, 'always' ]
+    // 'react/prop-types': ['enabled', { ignore: 'ignore', customValidators: 'customValidator' }]
   }
 }

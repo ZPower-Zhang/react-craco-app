@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 export default class Workplace extends Component {
-  render() {
+  render () {
     return (
       <div>
         WorkplaceWorkplaceWorkplaceWorkplace

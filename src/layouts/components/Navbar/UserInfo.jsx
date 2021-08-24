@@ -1,5 +1,5 @@
-
-import React, {memo, Component } from 'react'
+import React, { memo, Component } from 'react'
+import PropTypes from 'prop-types';
 import { Menu, Dropdown } from 'antd'
 import { DownOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux'
@@ -16,12 +16,12 @@ class UserInfo extends Component{
   // constructor(props) {
   //   super(props);
   // }
-  render() {
-    const {userInfo } = this.props;
+  render () {
+    const { userInfo } = this.props;
     return (
       <div className="user-info-wrap">
-        <Dropdown overlay={menu}>
-          <span className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+        <Dropdown overlay={ menu }>
+          <span className="ant-dropdown-link" onClick={ e => e.preventDefault() }>
             {userInfo.name} <DownOutlined />
           </span>
         </Dropdown>
@@ -31,7 +31,11 @@ class UserInfo extends Component{
 }
 
 const mapStateToProps = state => ({
-  userInfo: state.getIn(['user', 'userInfo'])
+  userInfo: state.getIn([ 'user', 'userInfo' ])
 })
+
+UserInfo.propTypes = {
+  userInfo: PropTypes.object.isRequired
+}
 
 export default connect(mapStateToProps)(memo(UserInfo))

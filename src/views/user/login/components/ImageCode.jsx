@@ -1,4 +1,5 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import { ReloadOutlined } from '@ant-design/icons';
 import './styles.css';
 
@@ -29,30 +30,30 @@ const STATUS_ERROR = 3; // 图片位置匹配失败
 
 const arrTips = [
   { ico: icoSuccess, text: '匹配成功' },
-  { ico: icoError, text: '匹配失败' },
+  { ico: icoError, text: '匹配失败' }
 ];
 
 // 生成裁剪路径
-function createClipPath(ctx, size = 100, styleIndex = 0) {
+function createClipPath (ctx, size = 100, styleIndex = 0) {
   const styles = [
-    [0, 0, 0, 0],
-    [0, 0, 0, 1],
-    [0, 0, 1, 0],
-    [0, 0, 1, 1],
-    [0, 1, 0, 0],
-    [0, 1, 0, 1],
-    [0, 1, 1, 0],
-    [0, 1, 1, 1],
-    [1, 0, 0, 0],
-    [1, 0, 0, 1],
-    [1, 0, 1, 0],
-    [1, 0, 1, 1],
-    [1, 1, 0, 0],
-    [1, 1, 0, 1],
-    [1, 1, 1, 0],
-    [1, 1, 1, 1],
+    [ 0, 0, 0, 0 ],
+    [ 0, 0, 0, 1 ],
+    [ 0, 0, 1, 0 ],
+    [ 0, 0, 1, 1 ],
+    [ 0, 1, 0, 0 ],
+    [ 0, 1, 0, 1 ],
+    [ 0, 1, 1, 0 ],
+    [ 0, 1, 1, 1 ],
+    [ 1, 0, 0, 0 ],
+    [ 1, 0, 0, 1 ],
+    [ 1, 0, 1, 0 ],
+    [ 1, 0, 1, 1 ],
+    [ 1, 1, 0, 0 ],
+    [ 1, 1, 0, 1 ],
+    [ 1, 1, 1, 0 ],
+    [ 1, 1, 1, 1 ]
   ];
-  const style = styles[styleIndex];
+  const style = styles[ styleIndex ];
 
   const r = 0.1 * size;
   ctx.save();
@@ -60,27 +61,27 @@ function createClipPath(ctx, size = 100, styleIndex = 0) {
   // left
   ctx.moveTo(r, r);
   ctx.lineTo(r, 0.5 * size - r);
-  ctx.arc(r, 0.5 * size, r, 1.5 * Math.PI, 0.5 * Math.PI, style[0]);
+  ctx.arc(r, 0.5 * size, r, 1.5 * Math.PI, 0.5 * Math.PI, style[ 0 ]);
   ctx.lineTo(r, size - r);
   // bottom
   ctx.lineTo(0.5 * size - r, size - r);
-  ctx.arc(0.5 * size, size - r, r, Math.PI, 0, style[1]);
+  ctx.arc(0.5 * size, size - r, r, Math.PI, 0, style[ 1 ]);
   ctx.lineTo(size - r, size - r);
   // right
   ctx.lineTo(size - r, 0.5 * size + r);
-  ctx.arc(size - r, 0.5 * size, r, 0.5 * Math.PI, 1.5 * Math.PI, style[2]);
+  ctx.arc(size - r, 0.5 * size, r, 0.5 * Math.PI, 1.5 * Math.PI, style[ 2 ]);
   ctx.lineTo(size - r, r);
   // top
   ctx.lineTo(0.5 * size + r, r);
-  ctx.arc(0.5 * size, r, r, 0, Math.PI, style[3]);
+  ctx.arc(0.5 * size, r, r, 0, Math.PI, style[ 3 ]);
   ctx.lineTo(r, r);
 
   ctx.clip();
   ctx.closePath();
 }
 
-export default class ImageCode extends React.Component {
-  constructor(props) {
+class ImageCode extends React.Component {
+  constructor (props) {
     super(props)
     if (props.onRef) {
       props.onRef(this)
@@ -93,7 +94,7 @@ export default class ImageCode extends React.Component {
     fragmentSize: 80,
     onReload: () => {},
     onMatch: () => {},
-    onError: () => {},
+    onError: () => {}
   };
   shadowCanvas = React.createRef();
   fragmentCanvas = React.createRef();
@@ -107,10 +108,10 @@ export default class ImageCode extends React.Component {
     currX: 0, // 滑块当前 x,
     status: STATUS_LOADING,
     showTips: false,
-    tipsIndex: 0,
+    tipsIndex: 0
   };
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate (prevProps) {
     // 当父组件传入新的图片后，开始渲染
     if (!!this.props.imageUrl && prevProps.imageUrl !== this.props.imageUrl) {
       this.renderImage();
@@ -252,7 +253,7 @@ export default class ImageCode extends React.Component {
         startX: 0, // 开始滑动的 x
         oldX: 0,
         currX: 0, // 滑块当前 x,
-        status: STATUS_LOADING,
+        status: STATUS_LOADING
       },
       this.props.onReload,
     );
@@ -271,39 +272,39 @@ export default class ImageCode extends React.Component {
     }, 2000);
   };
 
-  render() {
+  render () {
     const { imageUrl, imageWidth, imageHeight, fragmentSize } = this.props;
     const { offsetX, offsetY, currX, showTips, tipsIndex } = this.state;
-    const tips = arrTips[tipsIndex];
+    const tips = arrTips[ tipsIndex ];
 
     return (
-      <div className="image-code" style={{ width: imageWidth }}>
+      <div className="image-code" style={ { width: imageWidth } }>
         <div
           className="image-container"
-          style={{ height: imageHeight, background: `url("${imageUrl}") center center no-repeat`}}
+          style={ { height: imageHeight, background: `url("${ imageUrl }") center center no-repeat` } }
         >
-          <ReloadOutlined className="reload-ico" onClick={this.renderImage} />
+          <ReloadOutlined className="reload-ico" onClick={ this.renderImage } />
           <canvas
-            ref={this.shadowCanvas}
+            ref={ this.shadowCanvas }
             className="canvas"
-            width={fragmentSize}
-            height={fragmentSize}
-            style={{ left: offsetX + 'px', top: offsetY + 'px' }}
+            width={ fragmentSize }
+            height={ fragmentSize }
+            style={ { left: offsetX + 'px', top: offsetY + 'px' } }
           />
           <canvas
-            ref={this.fragmentCanvas}
+            ref={ this.fragmentCanvas }
             className="canvas"
-            width={fragmentSize}
-            height={fragmentSize}
-            style={{ top: offsetY + 'px', left: currX + 'px' }}
+            width={ fragmentSize }
+            height={ fragmentSize }
+            style={ { top: offsetY + 'px', left: currX + 'px' } }
           />
 
           <div
-            className={showTips ? 'tips-container--active' : 'tips-container'}
+            className={ showTips ? 'tips-container--active' : 'tips-container' }
           >
             <i
               className="tips-ico"
-              style={{ backgroundImage: `url("${tips.ico}")` }}
+              style={ { backgroundImage: `url("${ tips.ico }")` } }
             />
             <span className="tips-text">{tips.text}</span>
           </div>
@@ -311,21 +312,34 @@ export default class ImageCode extends React.Component {
 
         <div
           className="slider-wrpper"
-          onMouseMove={this.onMoving}
-          onMouseLeave={this.onMoveEnd}
+          onMouseMove={ this.onMoving }
+          onMouseLeave={ this.onMoveEnd }
         >
           <div className="slider-bar">按住滑块，拖动完成拼图</div>
           <div
             className="slider-button"
-            onMouseDown={this.onMoveStart}
-            onMouseUp={this.onMoveEnd}
-            style={{
+            onMouseDown={ this.onMoveStart }
+            onMouseUp={ this.onMoveEnd }
+            style={ {
               left: currX + 'px',
-              backgroundImage: `url("${icoSlider}")`,
-            }}
+              backgroundImage: `url("${ icoSlider }")`
+            } }
           />
         </div>
       </div>
     );
   }
 }
+
+ImageCode.propTypes = {
+  onRef: PropTypes.func,
+  imageUrl: PropTypes.string,
+  imageWidth: PropTypes.string,
+  imageHeight: PropTypes.string,
+  fragmentSize: PropTypes.string,
+  onMatch: PropTypes.func,
+  onError: PropTypes.func,
+  onReload: PropTypes.func
+}
+
+export default ImageCode

@@ -1,15 +1,18 @@
 import * as React from 'react'
 import {  Link, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { Breadcrumb } from 'antd';
 import routes from '@/router';
 import { HomeOutlined } from '@ant-design/icons';
 
 const flattenRoutes = (arr, routesMap) => {
   arr.map(cur => {
-    if (!routesMap[cur['path']]) {
-      routesMap[cur['path']] = cur['name'] || ''
+    if (!routesMap[ cur[ 'path' ] ]) {
+      routesMap[ cur[ 'path' ] ] = cur[ 'name' ] || ''
     }
-    Array.isArray(cur.routes) && flattenRoutes(cur.routes, routesMap)
+    if (Array.isArray(cur.routes)){
+      flattenRoutes(cur.routes, routesMap)
+    } 
     return cur
   })
   return routesMap
@@ -17,16 +20,16 @@ const flattenRoutes = (arr, routesMap) => {
 
 const breadcrumbNameMap = flattenRoutes(routes, {})
 
-const Navigation = (props) => {
-  const { location: { pathname = '' }} = props;
-  const pathSnippets = pathname.split('/').filter(i => i);
+const Navigation = ({ location, ...props }) => {
+  // const { location: { pathname = '' } } = props;
+  const pathSnippets = location.pathname.split('/').filter(i => i);
   const extraBreadcrumbItems = pathSnippets.map((_, idx) => {
-    const url = `/${pathSnippets.slice(0, idx + 1).join('/')}`;
+    const url = `/${ pathSnippets.slice(0, idx + 1).join('/') }`;
     if (!idx) return ''
     return (
-      <Breadcrumb.Item key={url}>
-        <Link to={url}>
-          {breadcrumbNameMap[url]}
+      <Breadcrumb.Item key={ url }>
+        <Link to={ url }>
+          {breadcrumbNameMap[ url ]}
         </Link>
       </Breadcrumb.Item>
     );
@@ -41,5 +44,8 @@ const Navigation = (props) => {
   )
 }
 
-export default withRouter(Navigation)
+Navigation.propTypes = {
+  location: PropTypes.object.isRequired
+}
 
+export default withRouter(Navigation)

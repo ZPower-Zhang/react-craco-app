@@ -1,1 +1,0 @@
-{"version":3,"sources":["views/userManage/index.jsx"],"names":["userManage","props"],"mappings":"0HAAA,uBAQeA,UANI,SAACC,GAClB,OACE","file":"static/js/7.e788f10f.chunk.js","sourcesContent":["import React from 'react';\n\nconst userManage = (props) => {\n  return (\n    <div>Home</div>\n  )\n}\n\nexport default userManage"],"sourceRoot":""}

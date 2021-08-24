@@ -1,0 +1,2 @@
+(this["webpackJsonpreact-craco-app"]=this["webpackJsonpreact-craco-app"]||[]).push([[11],{149:function(a,c,r){"use strict";r.r(c);r(0),r(233);var t=r(90),e=r(13);c.default=function(a){var c=a.route.routes,r=void 0===c?[]:c;return Object(e.jsx)("div",{className:"user-layout-wrapper",children:Object(t.a)(r)})}},233:function(a,c,r){}}]);
+//# sourceMappingURL=11.de0a21ad.chunk.js.map

@@ -6,11 +6,11 @@ import { Layout } from 'antd';
 import routes from '@/router';
 import store from '@/store';
 
-export default React.memo(function App() {
+export default React.memo(function App () {
   return (
-    <Provider store={store}>
+    <Provider store={ store }>
       <Layout>
-        <Router basename={window.__MICRO_APP_BASE_URL__ || '/'}>{renderRoutes(routes, store)}</Router>
+        <Router basename={ window.__MICRO_APP_BASE_URL__ || '/' }>{renderRoutes(routes, store)}</Router>
       </Layout>
     </Provider>
   )

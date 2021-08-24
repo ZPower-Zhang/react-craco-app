@@ -1,7 +1,6 @@
 import { axios } from '@/utils/request'
 
-
-export function getTenantList(params) {
+export function getTenantList (params) {
   return axios({
     url: '/tenant/list',
     method: 'get',
@@ -9,7 +8,7 @@ export function getTenantList(params) {
   })
 }
 
-export function getLotteryList(params) {
+export function getLotteryList (params) {
   return axios({
     url: '/lottery/list',
     method: 'get',

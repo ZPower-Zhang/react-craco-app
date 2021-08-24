@@ -4,8 +4,8 @@ import { Spin } from 'antd'
 
 const SuspenseComponent = (Component) => (props) => {
   return (
-    <React.Suspense fallback={<Spin />}>
-      <Component {...props}></Component>
+    <React.Suspense fallback={ <Spin /> }>
+      <Component { ...props }></Component>
     </React.Suspense>
   );
 };
@@ -66,21 +66,21 @@ const routes = [
             hidden: true, 
             name: '概览', 
             render: () => <Redirect to="/authorized/overview/analysis" /> ,
-            meta: { name: '概览', icon: 'UserOutlined' },
+            meta: { name: '概览', icon: 'UserOutlined' }
           },
           {
             path: '/authorized/overview/analysis',
             exact: false,
             name: '分析',
             component: SuspenseComponent(Analysis),
-            meta: { name: '分析', icon: 'UserOutlined' },
+            meta: { name: '分析', icon: 'UserOutlined' }
           },
           {
             path: '/authorized/overview/workplace',
             exact: false,
             name: '工作台',
             component: SuspenseComponent(Workplace),
-            meta: { name: '工作台', icon: 'UserOutlined' },
+            meta: { name: '工作台', icon: 'UserOutlined' }
           }
         ]
       },
@@ -98,14 +98,14 @@ const routes = [
             hidden: true, 
             name: 'marketing', 
             render: () => <Redirect to="/authorized/marketing/lottery" /> ,
-            meta: { name: 'marketing', icon: 'UserOutlined' },
+            meta: { name: 'marketing', icon: 'UserOutlined' }
           },
           {
             path: '/authorized/marketing/lottery',
             exact: false,
             name: '抽奖',
             component: SuspenseComponent(Lottery),
-            meta: { name: '抽奖', icon: 'UserOutlined' },
+            meta: { name: '抽奖', icon: 'UserOutlined' }
           }
         ]
       }

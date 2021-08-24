@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { CloseOutlined } from '@ant-design/icons';
 import ImageCode from './ImageCode';
 
-export default class LoginVerify extends Component {
+class LoginVerify extends Component {
   state = {
-    url: '',
+    url: ''
   };
 
   getImage = () => {
     return 'https://t7.baidu.com/it/u=364226397,1757963013&fm=193&f=GIF';
   };
 
-  componentDidMount() {
+  componentDidMount () {
     this.setState({ url: this.getImage() });
   }
 
@@ -27,7 +28,7 @@ export default class LoginVerify extends Component {
     this.props.onChangeVerify(true)
   }
 
-  render() {
+  render () {
     return (
       <div className="verify-mask">
         <div className="verify-box">
@@ -35,14 +36,14 @@ export default class LoginVerify extends Component {
             请完成安全验证
             <CloseOutlined
               className="verifybox-close"
-              onClick={this.closeBox}
+              onClick={ this.closeBox }
             />
           </div>
           <div className="verifybox-body">
             <ImageCode
-              imageUrl={this.state.url}
-              onReload={this.onReload}
-              onMatch={this.onMatch}
+              imageUrl={ this.state.url }
+              onReload={ this.onReload }
+              onMatch={ this.onMatch }
             />
           </div>
         </div>
@@ -50,3 +51,9 @@ export default class LoginVerify extends Component {
     );
   }
 }
+
+LoginVerify.propTypes = {
+  onChangeVerify: PropTypes.func
+}
+
+export default LoginVerify
