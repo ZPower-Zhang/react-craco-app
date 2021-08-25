@@ -1,4 +1,6 @@
 /* craco.config.js */
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const SimpleProgressWebpackPlugin = require( 'simple-progress-webpack-plugin' )
 const path = require('path')
 const CracoLessPlugin = require('craco-less');
 const resolve = (dir) => path.resolve(__dirname, dir)
@@ -11,11 +13,11 @@ module.exports = {
         lessLoaderOptions: {
           lessOptions: {
             modifyVars: { '@primary-color': '#1890ff' },
-            javascriptEnabled: true,
-          },
-        },
-      },
-    },
+            javascriptEnabled: true
+          }
+        }
+      }
+    }
   ],
   webpack: {
     alias: {
@@ -35,7 +37,7 @@ module.exports = {
      *  - configure 能够重写 webpack 相关的所有配置，但是，仍然推荐你优先阅读 craco 提供的快捷配置，把解决不了的配置放到 configure 里解决；
      *  - 这里选择配置为函数，与直接定义 configure 对象方式互斥；
      */
-     configure: (webpackConfig, { env, paths }) => {
+    configure: (webpackConfig, { env, paths }) => {
       paths.appBuild = 'dist'
       webpackConfig.output = {
         ...webpackConfig.output,
@@ -43,12 +45,16 @@ module.exports = {
         publicPath: '/'
       }
       return webpackConfig
-    }
+    },
+    plugins: [
+      new BundleAnalyzerPlugin(), // 打包分析
+      new SimpleProgressWebpackPlugin()
+    ]
   },
   devServer: {
     port: 3000,
     headers: {
-      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Origin': '*'
     },
     proxy: {
       '/api': {
@@ -60,6 +66,6 @@ module.exports = {
           // "^/loc": ''
         }
       }
-    },
-  },
+    }
+  }
 };
