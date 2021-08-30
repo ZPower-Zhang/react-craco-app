@@ -1,4 +1,5 @@
 /* craco.config.js */
+const { whenDev, whenProd, when } = require('@craco/craco')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const SimpleProgressWebpackPlugin = require( 'simple-progress-webpack-plugin' )
 const path = require('path')
@@ -47,6 +48,9 @@ module.exports = {
       return webpackConfig
     },
     plugins: [
+      // ...whenDev(() => [
+
+      // ])
       new BundleAnalyzerPlugin(), // 打包分析
       new SimpleProgressWebpackPlugin()
     ]
